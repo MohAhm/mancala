@@ -1,10 +1,12 @@
 #!/usr/bin/python           # This is server.py file
 
 import socket  # Import socket module
-import numpy as np
+# import numpy as np
 import time
 from multiprocessing.pool import ThreadPool
 import os
+
+from mancala import Mancala
 
 
 def receive(socket):
@@ -23,7 +25,7 @@ def send(socket, msg):
 
 
 # VARIABLES
-playerName = 'Your player name'
+playerName = 'Mohamed Ahmed'
 host = '127.0.0.1'
 port = 30000  # Reserve a port for your service.
 s = socket.socket()  # Create a socket object
@@ -70,11 +72,19 @@ while not gameEnd:
             i += 1
             j += 2
 
+        # print(board)
+
         # Using your intelligent bot, assign a move to "move"
         #
         # example: move = '1';  Possible moves from '1' to '6' if the game's rules allows those moves.
         # TODO: Change this
         ################
-        move = '0'
+        mancala = Mancala(board)
+        state = mancala.initial
+        moves = mancala.actions(state)
+        # move = '1'
+        # move = str(1)
+        num = mancala.to_move(state, moves[0])
+        move = num
         ################
         send(s, move)
