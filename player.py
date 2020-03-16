@@ -15,6 +15,12 @@ class Player:
     def holes(self, board):
         return Move(board[:6]) if self.player == 1 else Move(board[7:13])
 
+    def side(self):
+        if self.player == 1:
+            return 0, 6
+        else:
+            return 7, 13
+
     def store(self):
         return 6 if self.player == 1 else 13
 

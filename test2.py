@@ -11,7 +11,7 @@ board3 = [0, 5, 5, 1, 6, 5, 8, 0, 0, 0, 0, 0, 1, 18]
 # 18     1 0 0 0 0 0
 #       0 5 5 1 6 5    8
 
-mancala = Mancala(board2, playerTurn)
+mancala = Mancala(init_board, playerTurn)
 state = mancala.initial
 
 # print(mancala.actions(state))
@@ -20,12 +20,13 @@ moves = mancala.actions(state)
 
 for move in moves:
     s = mancala.result(state, move)
+    # print(s.player.turn())
     print(s.board)
 
 # print(mancala.apply_move(state, moves[1]))
 # print(state.player.turn())
 # print(moves)
-# state = mancala.result(state, moves[0])
+# state = mancala.result(state, moves[4])
 # print(mancala.actions(state))
 # print(state.board)
 # print(state.player.turn())
