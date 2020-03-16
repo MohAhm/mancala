@@ -1,10 +1,10 @@
 
 class GameState:
-    def __init__(self, board, player, moves, utility):
-        self.board = board
-        self.player = player
-        self.moves = moves
+    def __init__(self, player_turn, utility, board, moves):
+        self.player_turn = player_turn
         self.utility = utility
+        self.board = board
+        self.moves = moves
 
     def find_winning_move(self, game_state, next_player):
         ### A function that finds a move that immediately wins the game ###

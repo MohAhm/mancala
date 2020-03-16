@@ -73,18 +73,19 @@ while not gameEnd:
             j += 2
 
         # print(board)
+        # print(playerTurn)
 
         # Using your intelligent bot, assign a move to "move"
         #
         # example: move = '1';  Possible moves from '1' to '6' if the game's rules allows those moves.
         # TODO: Change this
         ################
-        mancala = Mancala(board)
+        mancala = Mancala(board, playerTurn)
         state = mancala.initial
         moves = mancala.actions(state)
         # move = '1'
         # move = str(1)
-        num = mancala.to_move(state, moves[0])
+        num = mancala.apply_move(state, moves[0])
         move = num
         ################
         send(s, move)

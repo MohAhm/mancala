@@ -1,4 +1,5 @@
 
+
 class Move:
     def __init__(self, pockets):
         self.moves = {}
