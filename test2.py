@@ -7,11 +7,17 @@ board2 = [0, 5, 5, 1, 6, 5, 1, 5, 0, 5, 5, 5, 5, 0]
 # 0     5 5 5 5 0 5
 #       0 5 5 1 6 5    1
 
-board3 = [0, 5, 5, 1, 6, 5, 8, 0, 0, 0, 0, 0, 1, 18]
-# 18     1 0 0 0 0 0
+board3 = [0, 5, 5, 1, 6, 5, 8, 0, 0, 0, 1, 0, 0, 18]
+# 18     0 0 1 0 0 0
 #       0 5 5 1 6 5    8
 
-mancala = Mancala(init_board, playerTurn)
+board4 = [0, 0, 0, 0, 6, 0, 8, 1, 0, 5, 5, 5, 0, 18]
+# 18     0 5 5 5 0 1
+#       0 0 0 0 6 0    8
+
+board5 = [0, 5, 5, 1, 6, 5, 8, 0, 0, 0, 1, 0, 1, 18]
+
+mancala = Mancala(board5, playerTurn)
 state = mancala.initial
 
 # print(mancala.actions(state))
@@ -24,10 +30,15 @@ for move in moves:
     print(s.board)
 
 # print(mancala.apply_move(state, moves[1]))
-# print(state.player.turn())
+# print('Player', state.player.turn())
 # print(moves)
-# state = mancala.result(state, moves[4])
+# state = mancala.result(state, moves[0])
 # print(mancala.actions(state))
 # print(state.board)
-# print(state.player.turn())
+# print('Player', state.player.turn())
+# print('Player', state.previous_player)
+# print(state.utility)
 # print(state.player.score(state.board))
+
+# if mancala.terminal_test(state):
+#     print('ok')

@@ -7,6 +7,7 @@ from multiprocessing.pool import ThreadPool
 import os
 
 from mancala import Mancala
+from minimax import Minimax
 
 
 def receive(socket):
@@ -31,7 +32,7 @@ port = 30000  # Reserve a port for your service.
 s = socket.socket()  # Create a socket object
 pool = ThreadPool(processes=1)
 gameEnd = False
-MAX_RESPONSE_TIME = 5
+MAX_RESPONSE_TIME = 15
 
 print('The player: ' + playerName + ' starts!')
 s.connect((host, port))
@@ -72,9 +73,6 @@ while not gameEnd:
             i += 1
             j += 2
 
-        # print(board)
-        # print(playerTurn)
-
         # Using your intelligent bot, assign a move to "move"
         #
         # example: move = '1';  Possible moves from '1' to '6' if the game's rules allows those moves.
@@ -82,10 +80,11 @@ while not gameEnd:
         ################
         mancala = Mancala(board, playerTurn)
         state = mancala.initial
-        moves = mancala.actions(state)
+
+        minimax = Minimax(mancala) 
+        action = minimax.alpha_beta_search(state)
+
         # move = '1'
-        # move = str(1)
-        num = mancala.apply_move(state, moves[0])
-        move = num
+        move = mancala.apply_move(state, action)
         ################
         send(s, move)
