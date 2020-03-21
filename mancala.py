@@ -115,8 +115,7 @@ class Mancala:
         return state.utility
 
     def eval(self, board, player, player_moves):
-        # Evaluation function: to win the game player should collect more stones than than the opponent
-        # the player should also have less number of empty holes than the opponent
+        # The evaluation function
         opponent = player.other()
         opponent_moves = opponent.holes(board)
 
@@ -124,12 +123,14 @@ class Mancala:
             score_diff = player.score(board) - opponent.score(board)
             moves_diff = len(player_moves.possible_moves()) - \
                 len(opponent_moves.possible_moves())
-            return score_diff + moves_diff  # add weights
+
+            return score_diff + moves_diff
         else:
             score_diff = opponent.score(board) - player.score(board)
             moves_diff = len(opponent_moves.possible_moves()) - \
                 len(player_moves.possible_moves())
-            return score_diff + moves_diff  # add weights
+
+            return score_diff + moves_diff
 
     def game_end(self, board):
         # Return true if either player or opponent side is empty

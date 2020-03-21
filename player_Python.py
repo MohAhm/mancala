@@ -32,7 +32,7 @@ port = 30000  # Reserve a port for your service.
 s = socket.socket()  # Create a socket object
 pool = ThreadPool(processes=1)
 gameEnd = False
-MAX_RESPONSE_TIME = 15
+MAX_RESPONSE_TIME = 5
 
 print('The player: ' + playerName + ' starts!')
 s.connect((host, port))
@@ -81,10 +81,9 @@ while not gameEnd:
         mancala = Mancala(board, playerTurn)
         state = mancala.initial
 
-        minimax = Minimax(mancala) 
+        minimax = Minimax(mancala)
         action = minimax.alpha_beta_search(state)
 
-        # move = '1'
         move = mancala.apply_move(state, action)
         ################
         send(s, move)

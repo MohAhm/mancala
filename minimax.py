@@ -2,7 +2,7 @@ from mancala import Mancala
 
 
 class Minimax:
-    def __init__(self, game, depth=4):
+    def __init__(self, game, depth=3):
         self.game = game
         self.depth = depth
 
@@ -13,7 +13,7 @@ class Minimax:
         best_action = -1
 
         for a in self.game.actions(state):
-            v = self.min_value(self.game.result(state, a), best_score, beta, 1)
+            v = self.min_value(self.game.result(state, a), best_score, beta, 0)
             # print(best_score)
             if v > best_score:
                 best_score = v
