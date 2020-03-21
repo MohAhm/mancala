@@ -14,7 +14,7 @@ class Minimax:
 
         for a in self.game.actions(state):
             v = self.min_value(self.game.result(state, a), best_score, beta, 0)
-            # print(best_score)
+
             if v > best_score:
                 best_score = v
                 best_action = a
@@ -46,7 +46,7 @@ class Minimax:
         for a in self.game.actions(state):
             v = min(v, self.max_value(self.game.result(
                 state, a), alpha, beta, depth + 1))
-            # print(v)
+
             if v <= alpha:
                 return v
             beta = min(beta, v)
